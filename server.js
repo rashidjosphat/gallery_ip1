@@ -1,10 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
+const config = require('./_config');
 
 // Define routes
 let index = require('./routes/index');
 let image = require('./routes/image');
+
+// Initializing the app
+const app = express();
 
 // Connecting to the database
 mongoose.connect('mongodb+srv://james_rashid:james_rashid@cluster0.bwtll.mongodb.net/darkroom?retryWrites=true&w=majority&appName=Cluster0', {
