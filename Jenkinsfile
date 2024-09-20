@@ -18,6 +18,7 @@ pipeline {
                 sh 'npm install'
             }
         }
+        stage('testing the application'){steps{sh 'npm test'}}
         stage('Activation of Deployment') {
             steps {
                 script {
