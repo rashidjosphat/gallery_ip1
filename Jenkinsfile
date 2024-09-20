@@ -1,8 +1,8 @@
 pipeline {
     agent any
     environment {
-        RENDER_DEPLOY_URL = 'https://api.render.com/deploy/srv-crm2jibv2p9s73e7fbcg'
-        RENDER_API_KEY = credentials('render_api_key') 
+        RENDER_DEPLOY_URL = 'https://api.render.com/deploy/srv-crmk3vo8fa8c73ak0q5g'
+        RENDER_API_KEY = credentials('ccfca321-a4e8-4c64-9ff5-1848aea5b33c') 
     }
     tools {
         nodejs 'nodejs'
@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('Cloning Repo') {
             steps {
-                git 'https://github.com/jamesrashid226/gallery.git'
+                git 'https://github.com/rashidjosphat/gallery_ip1.git'
             }
         }
         stage('Installing Dependencies') {
