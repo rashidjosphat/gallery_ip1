@@ -20,9 +20,6 @@ mongoose.connect('mongodb+srv://james_rashid:james_rashid@cluster0.bwtll.mongodb
     console.error('Connection error:', err);
 });
 
-// Initializing the app
-const app = express();
-
 // View Engine
 app.set('view engine', 'ejs');
 
@@ -32,11 +29,17 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Body parser middleware
 app.use(express.json());
 
+// Define routes
 app.use('/', index);
 app.use('/image', image);
 
-// Start the server
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-    console.log(`Server is listening at http://0.0.0.0:${PORT}`);
-});
+// Export the app for testing
+module.exports = app;
+
+// Only start the server if this file is executed directly
+if (require.main === module) {
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => {
+        console.log(`Server is listening at http://0.0.0.0:${PORT}`);
+    });
+}
