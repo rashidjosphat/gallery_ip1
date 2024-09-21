@@ -60,7 +60,7 @@ pipeline {
                 """
             )
             // Slack notification on success
-            slackSend(channel: '#social', message: "Build succeeded 🎉: ${env.JOB_NAME} #${env.BUILD_NUMBER}. Render Deployment URL: ${RENDER_DEPLOY_URL}")
+            slackSend(channel: '#social', message: "Build succeeded 🎉: ${env.JOB_NAME} #${env.BUILD_NUMBER}. Render Deployment URL: ${RENDER_DEPLOY_URL}. the site is at https://ip1-m6to.onrender.com")
         }
     }
 }
