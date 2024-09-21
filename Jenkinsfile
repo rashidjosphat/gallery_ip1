@@ -40,25 +40,21 @@ pipeline {
     post {
         failure {
             emailext (
+                to: 'jamesrashid226@gmail.com'
                 subject: "Build Failed 😔: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """
-                    <p>The build for <b>${env.JOB_NAME}</b> has failed.</p>
-                    <p>Check the console output at: <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
-                """,
-                recipientProviders: [[$class: 'CulpritRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                mimeType: 'text/html'
+                    the build failed
+                    """
             )
         }
         success {
             emailext (
+                to: 'jamesrashid226@gmail.com'
                 subject: "I think the build was successful 😄: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """
-                    <p>The build test for <b>${env.JOB_NAME}</b> has run successfully.</p>
-                    <p>The initiator was <b>${env.CHANGE_AUTHOR}</b>, email: <b>${env.CHANGE_AUTHOR_EMAIL}</b></p>
-                    <p><b>I think I'm going to sleep now. Is there anything else you need?</b></p>
-                """,
-                recipientProviders: [$class: 'CulpritRecipientProvider'],
-                mimeType: 'text/html'
+                    the build was a success: ${env.BUILD_URL}
+                """
+                
             )
         }
     }
