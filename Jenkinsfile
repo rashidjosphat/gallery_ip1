@@ -57,6 +57,7 @@ pipeline {
                     <p>The initiator was <b>${env.CHANGE_AUTHOR}</b>, email: <b>${env.CHANGE_AUTHOR_EMAIL}</b></p>
                     <p><b>I think I'm going to sleep now. Is there anything else you need?</b></p>
                 """,
+                recipientProviders: [$class: 'CulpritRecipientProvider'],
                 mimeType: 'text/html'
             )
         }
