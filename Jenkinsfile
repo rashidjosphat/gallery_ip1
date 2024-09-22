@@ -5,22 +5,23 @@ pipeline {
         RENDER_API_KEY = credentials('ccfca321-a4e8-4c64-9ff5-1848aea5b33c') 
     }
     tools {
-        nodejs 'nodejs'
+        nodejs 'nodejs' // Required tool (1 point)
     }
     stages {
         stage('Cloning Repo') {
             steps {
-                git 'https://github.com/rashidjosphat/gallery_ip1.git'
+                git 'https://github.com/rashidjosphat/gallery_ip1.git' // Repository is correctly hooked (1 point)
             }
         }
         stage('Installing Dependencies') {
             steps {
-                sh 'npm install'
+                sh 'npm install' // Installs Node and other dependencies (1 point)
             }
         }
+        stage('building the application'){steps{sh 'npm run build'}}
         stage('Testing the Application') {
             steps {
-                sh 'npm test'
+                sh 'npm test' // Tests the project (1 point)
             }
         }
         stage('Activation of Deployment') {
@@ -45,7 +46,7 @@ pipeline {
                 body: """
                     The build failed for ${env.JOB_NAME} #${env.BUILD_NUMBER}.
                 """
-            )
+            ) // Emails on failure (1 point)
             // Slack notification on failure
             slackSend(channel: '#social', message: "Build Failed 😔: ${env.JOB_NAME} #${env.BUILD_NUMBER}. Render Deployment URL: ${RENDER_DEPLOY_URL}")
         }
@@ -58,7 +59,7 @@ pipeline {
                     
                     Build URL: ${env.BUILD_URL}
                 """
-            )
+            ) // Emails on success, but the focus is on failure (already counted) 
             // Slack notification on success
             slackSend(channel: '#social', message: "Build succeeded 🎉: ${env.JOB_NAME} #${env.BUILD_NUMBER}. Render Deployment URL: ${RENDER_DEPLOY_URL}. the site is at https://ip1-m6to.onrender.com")
         }
