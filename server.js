@@ -11,7 +11,7 @@ let image = require('./routes/image');
 const app = express();
 
 // Connecting to the database
-mongoose.connect('mongodb+srv://james_rashid:james_rashid@cluster0.bwtll.mongodb.net/darkroom?retryWrites=true&w=majority&appName=Cluster0', {
+mongoose.connect('mongodb+srv://james_rashid:james_rashid@cluster0.bwtll.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 }).then(() => {
